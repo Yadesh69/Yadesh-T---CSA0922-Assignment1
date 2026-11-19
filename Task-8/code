@@ -1,0 +1,55 @@
+interface Chargeable {
+double calculateFee(int minutes);
+}
+
+abstract class Vehicle8 implements Chargeable {
+String regNo;
+Vehicle8(String regNo) { this.regNo = regNo; }
+@Override
+public boolean equals(Object obj) {
+if (this == obj) return true;
+if (!(obj instanceof Vehicle8)) return false;
+Vehicle8 other = (Vehicle8) obj;
+return regNo.equals(other.regNo);
+}
+@Override
+public int hashCode() { return regNo.hashCode(); }
+}
+class TwoWheeler extends Vehicle8 {
+TwoWheeler(String regNo) { super(regNo); }
+public double calculateFee(int minutes) {
+return ((minutes + 59) / 60) * 10.0;
+}
+}
+class Car extends Vehicle8 {
+Car(String regNo) { super(regNo); }
+public double calculateFee(int minutes) {
+return ((minutes + 59) / 60) * 30.0;
+}
+}
+class ElectricCar extends Car {
+double kWh;
+ElectricCar(String regNo, double kWh) {
+super(regNo);
+this.kWh = kWh;
+}
+@Override
+public double calculateFee(int minutes) {
+return super.calculateFee(minutes) + kWh * 12.0;
+}
+}
+public class FeeDemo {
+public static void main(String[] args) {
+Vehicle8[] vehicles = {
+new TwoWheeler("TN01A1"),
+new Car("TN02B2"),
+new ElectricCar("TN03C3", 10)
+};
+for (Vehicle8 v : vehicles) {
+System.out.println(v.getClass().getSimpleName() + " "
++ v.regNo + " -> Rs "
++ v.calculateFee(180));
+}
+System.out.println(vehicles[0].equals(new TwoWheeler("TN01A1")));
+}
+}
