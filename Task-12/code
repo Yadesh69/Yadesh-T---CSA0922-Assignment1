@@ -1,0 +1,50 @@
+class ExtendedParking12 {
+private final String[][] slots = {
+new String[2], new String[3], new String[4],
+new String[2], new String[5]
+};
+int[] park(String number) {
+if (number == null || number.trim().isEmpty())
+throw new IllegalArgumentException("Invalid vehicle number");
+for (int f = 0; f < slots.length; f++)
+for (int s = 0; s < slots[f].length; s++)
+if (slots[f][s] == null) {
+slots[f][s] = number;
+return new int[]{f, s};
+}
+return null;
+}
+double calculateFee(String type, int hours, int arrivalHour) {
+if (hours < 1 || arrivalHour < 0 || arrivalHour > 23)
+throw new IllegalArgumentException("Invalid duration/time");
+switch (type.toLowerCase()) {
+case "ebike": return 25.0;
+case "car": return hours * 30.0;
+case "twowheeler": return hours * 10.0;
+case "deliveryvan":
+return hours * ((arrivalHour >= 9 && arrivalHour < 17) ? 60.0 : 30.0);
+case "visitor": return 100.0;
+default: throw new IllegalArgumentException("Unknown vehicle type");
+}
+}
+void displayCapacity() {
+for (int f = 0; f < slots.length; f++) {
+int occupied = 0;
+for (String v : slots[f]) if (v != null) occupied++;
+System.out.println("Floor " + (f + 1) + ": "
+
++ occupied + "/" + slots[f].length + " occupied");
+}
+}
+}
+public class Task12 {
+public static void main(String[] args) {
+ExtendedParking12 p = new ExtendedParking12();
+System.out.println("E-bike fee: Rs " + p.calculateFee("ebike", 3, 10));
+System.out.println("Car fee: Rs " + p.calculateFee("car", 3, 10));
+System.out.println("Van fee: Rs " + p.calculateFee("deliveryvan", 3, 10));
+System.out.println("Visitor pass: Rs " + p.calculateFee("visitor", 1, 10));
+System.out.println(java.util.Arrays.toString(p.park("TN01AB1234")));
+p.displayCapacity();
+}
+}
