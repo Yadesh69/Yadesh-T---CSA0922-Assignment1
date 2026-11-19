@@ -1,0 +1,29 @@
+class Vehicle6 {
+String number;
+Vehicle6(String number) {
+this.number = number;
+System.out.println("Vehicle constructor");
+}
+void display() {
+System.out.println("Vehicle: " + number);
+}
+}
+class Car6 extends Vehicle6 {
+int seats;
+Car6(String number, int seats) {
+super(number);
+this.seats = seats;
+System.out.println("Car constructor");
+}
+@Override
+void display() {
+super.display();
+System.out.println("Seats: " + seats);
+}
+}
+public class Task6 {
+public static void main(String[] args) {
+Car6 car = new Car6("TN01AB1234", 5);
+car.display();
+}
+}
