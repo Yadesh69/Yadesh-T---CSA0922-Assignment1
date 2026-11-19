@@ -1,0 +1,21 @@
+class Ticket5 {
+static int totalTickets = 0;
+int ticketId;
+String vehicleNumber;
+Ticket5(String vehicleNumber) {
+this.vehicleNumber = vehicleNumber;
+ticketId = ++totalTickets;
+}
+void display() {
+System.out.println(ticketId + ": " + vehicleNumber);
+}
+}
+public class Task5 {
+public static void main(String[] args) {
+Ticket5 a = new Ticket5("TN01AB1234");
+Ticket5 b = new Ticket5("TN02CD5678");
+a.display();
+b.display();
+System.out.println("Total: " + Ticket5.totalTickets);
+}
+}
