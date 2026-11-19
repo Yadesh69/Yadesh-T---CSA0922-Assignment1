@@ -1,0 +1,23 @@
+class Vehicle4 {
+String vehicleNumber;
+String type;
+Vehicle4(String vehicleNumber, String type) {
+this.vehicleNumber = vehicleNumber;
+this.type = type;
+}
+
+Vehicle4(Vehicle4 other) {
+this(other.vehicleNumber, other.type);
+}
+void display() {
+System.out.println(vehicleNumber + " - " + type);
+}
+}
+public class Task4 {
+public static void main(String[] args) {
+Vehicle4 v1 = new Vehicle4("TN01AB1234", "Car");
+Vehicle4 v2 = new Vehicle4(v1);
+v1.display();
+v2.display();
+}
+}
