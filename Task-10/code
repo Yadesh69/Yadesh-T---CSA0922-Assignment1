@@ -1,0 +1,16 @@
+public class Vehicle10 {
+private String vehicleNumber;
+
+public Vehicle10(String vehicleNumber) {
+setVehicleNumber(vehicleNumber);
+}
+public void setVehicleNumber(String number) {
+if (number == null || number.trim().isEmpty()) {
+throw new IllegalArgumentException("Vehicle number cannot be empty");
+}
+vehicleNumber = number;
+}
+public String getVehicleNumber() {
+return vehicleNumber;
+}
+}
