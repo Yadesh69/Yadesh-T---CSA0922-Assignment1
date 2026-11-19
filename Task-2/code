@@ -1,0 +1,14 @@
+public class Task2 {
+public static void main(String[] args) {
+String[][] slots = new String[2][3];
+slots[0][0] = "TN01AB1234";
+for (int floor = 0; floor < slots.length; floor++) {
+for (int slot = 0; slot < slots[floor].length; slot++) {
+String status = (slots[floor][slot] == null)
+? "Free" : slots[floor][slot];
+System.out.println("Floor " + floor + ", Slot "
++ slot + ": " + status);
+}
+}
+}
+}
