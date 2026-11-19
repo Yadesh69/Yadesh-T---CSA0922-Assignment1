@@ -1,0 +1,29 @@
+class Vehicle7 {
+String number;
+Vehicle7(String number) { this.number = number; }
+final void displayNumber() {
+System.out.println(number);
+}
+void calculateFee() {
+System.out.println("General fee");
+}
+@Override
+public String toString() {
+return "Vehicle[" + number + "]";
+}
+}
+class Car7 extends Vehicle7 {
+Car7(String number) { super(number); }
+@Override
+void calculateFee() {
+System.out.println("Car fee: Rs 30 per hour");
+}
+}
+public class Task7 {
+public static void main(String[] args) {
+Car7 car = new Car7("TN01AB1234");
+car.displayNumber();
+car.calculateFee();
+System.out.println(car);
+}
+}
