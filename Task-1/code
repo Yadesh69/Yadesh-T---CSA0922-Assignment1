@@ -1,0 +1,18 @@
+class Vehicle1 {
+String vehicleNumber;
+String vehicleType;
+Vehicle1(String vehicleNumber, String vehicleType) {
+this.vehicleNumber = vehicleNumber;
+this.vehicleType = vehicleType;
+}
+void display() {
+System.out.println(vehicleNumber + " - " + vehicleType);
+}
+}
+
+public class Task1 {
+public static void main(String[] args) {
+Vehicle1 v = new Vehicle1("TN01AB1234", "Car");
+v.display();
+}
+}
