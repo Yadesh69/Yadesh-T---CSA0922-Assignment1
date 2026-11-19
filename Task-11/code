@@ -1,0 +1,45 @@
+class ParkingSystem11 {
+private final String[][] slots;
+ParkingSystem11(int[] capacity) {
+slots = new String[capacity.length][];
+for (int f = 0; f < capacity.length; f++) {
+if (capacity[f] < 0) throw new IllegalArgumentException("Invalid capacity");
+slots[f] = new String[capacity[f]];
+}
+}
+int[] park(String number) {
+if (number == null || number.trim().isEmpty())
+throw new IllegalArgumentException("Invalid vehicle number");
+
+for (int f = 0; f < slots.length; f++)
+for (int s = 0; s < slots[f].length; s++)
+if (slots[f][s] == null) {
+slots[f][s] = number;
+return new int[]{f, s};
+}
+return null;
+}
+boolean release(int f, int s) {
+if (f < 0 || f >= slots.length) return false;
+if (s < 0 || s >= slots[f].length) return false;
+if (slots[f][s] == null) return false;
+slots[f][s] = null;
+return true;
+}
+double fee(int hours, double rate) {
+if (hours < 1 || rate < 0) throw new IllegalArgumentException("Invalid fee input");
+return hours * rate;
+}
+}
+public class Task11 {
+public static void main(String[] args) {
+ParkingSystem11 p = new ParkingSystem11(new int[]{2, 1});
+System.out.println(java.util.Arrays.toString(p.park("TN01AB1234")));
+System.out.println(java.util.Arrays.toString(p.park("TN02CD5678")));
+System.out.println(java.util.Arrays.toString(p.park("TN03EF9012")));
+System.out.println(p.park("TN04GH3456"));
+System.out.println(p.release(0, 1));
+System.out.println(p.release(5, 0));
+System.out.println("Fee: Rs " + p.fee(3, 30));
+}
+}
