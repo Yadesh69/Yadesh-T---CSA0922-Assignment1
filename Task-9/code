@@ -1,0 +1,18 @@
+abstract class ParkingVehicle9 {
+String number;
+ParkingVehicle9(String number) { this.number = number; }
+abstract double calculateFee(int hours);
+void display() { System.out.println("Vehicle: " + number); }
+}
+class ParkingCar9 extends ParkingVehicle9 {
+ParkingCar9(String number) { super(number); }
+@Override
+double calculateFee(int hours) { return hours * 30.0; }
+}
+public class Task9 {
+public static void main(String[] args) {
+ParkingVehicle9 v = new ParkingCar9("TN01AB1234");
+v.display();
+System.out.println("Fee: Rs " + v.calculateFee(3));
+}
+}
